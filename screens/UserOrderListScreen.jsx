@@ -34,7 +34,7 @@ const UserOrderListScreen = ({navigation}) => {
                 {item.orderItems.map((orderItem)=> (
                   <Fragment key={orderItem._id}>
                       <View style={styles.itemWrapper}>
-                        <Image source={{uri: baseApiUrl + orderItem.imageUrls[0]}} style={styles.image} />
+                        <Image source={{uri: orderItem.imageUrls[0].url}} style={styles.image} />
                         <View style={styles.titleContainer}>
                           <Text>{orderItem.title}</Text>
                           <Text style={commonStyles.boldTxt}>Tk. {orderItem.price} x {orderItem.count} = Tk. {orderItem.price * orderItem.count}</Text>

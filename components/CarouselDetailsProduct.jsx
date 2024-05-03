@@ -42,14 +42,14 @@ const CarouselDetailsProduct = ({carouselImages}) => {
         )}
         renderItem={({item})=> (
           <View>
-            <Image source={{uri: baseApiUrl + item}} style={styles.image} />
+            <Image source={{uri: item.url}} style={styles.image} />
           </View>
         )}
       />
       <View style={styles.pagination}>
         {carouselImages.map((image, index)=> (
           <TouchableOpacity key={index} style={[styles.dot]} onPress={()=> setCurrentIndex(index)}>
-            <Image source={{uri: baseApiUrl + image}} style={styles.paginationImage} />
+            <Image source={{uri: image.url}} style={styles.paginationImage} />
           </TouchableOpacity>
         ))}
         <Animated.View

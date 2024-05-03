@@ -8,7 +8,7 @@ const CategoryMenu = ({item, navigation}) => {
       onPress={()=> navigation.navigate("ProductListScreen", {categoryId: item?._id, title: item?.name})}
     >
       <View style={styles.iconContainer}>
-        <Image source={{uri: baseApiUrl + "/" + item.imageUrl}} style={styles.image} />
+        <Image source={{uri: item.imageUrl?.url}} style={styles.image} />
       </View>
       <Text>{item.name}</Text>
     </TouchableOpacity>

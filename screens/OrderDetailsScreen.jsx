@@ -52,7 +52,7 @@ const OrderDetailsScreen = ({route}) => {
               {order.orderItems.map((product)=> (
                 <View key={product._id}>
                   <View style={styles.itemWrapper}>
-                    <Image source={{uri: baseApiUrl + product.imageUrls[0]}} style={styles.image} />
+                    <Image source={{uri: product.imageUrls[0].url}} style={styles.image} />
                     <View style={styles.rightColumn}>
                       <Text style={[commonStyles.boldTxt, {marginBottom: 10}]}>{product.title}</Text>
                       <Text>Tk. {product.price} x {product.count} = Tk. {product.price * product.count}</Text>

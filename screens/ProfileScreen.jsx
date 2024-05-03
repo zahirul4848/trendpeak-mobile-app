@@ -19,7 +19,7 @@ const ProfileScreen = ({navigation}) => {
   }
 
   useEffect(() => {
-    if(!userInfo) {
+    if(userInfo?.name == undefined) {
       navigation.navigate("LoginScreen");
     }
   }, [userInfo, navigation]);

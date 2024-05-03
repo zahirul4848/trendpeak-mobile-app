@@ -25,7 +25,7 @@ const LoginScreen = ({navigation}) => {
 
   useEffect(()=> {
     //removeItem("onboarded")
-    if(userInfo) {
+    if(userInfo?.name !== undefined) {
      navigation.navigate("ProfileScreen");
     }
   }, [userInfo, navigation]);

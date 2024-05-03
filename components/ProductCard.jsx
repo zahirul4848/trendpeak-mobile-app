@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import CartModal from './CartModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
-import { useLazyGetUserProfileQuery, useToggleWishlistMutation } from '../store/userApiSlice';
+import { useGetUserProfileQuery, useLazyGetUserProfileQuery, useToggleWishlistMutation } from '../store/userApiSlice';
 import { useEffect } from 'react';
 
 const ProductCard = ({navigation, product}) => {
@@ -14,8 +14,7 @@ const ProductCard = ({navigation, product}) => {
   const [openModal, setOpenModal] = useState(false);
   
   const [toggleWishlist] = useToggleWishlistMutation();
-  const [getUserProfile, {data: userProfile}] = useLazyGetUserProfileQuery();
-  
+  const {data: userProfile, refetch} = useGetUserProfileQuery();
   const toggleModal = ()=> {
     setOpenModal(prev=> !prev);
   }
@@ -28,7 +27,7 @@ const ProductCard = ({navigation, product}) => {
     if(userInfo) {
       try {
         await toggleWishlist({productId});
-        getUserProfile();
+        refetch();
       } catch (err) {
         Alert.alert(err?.data?.message || err.error);
       }
@@ -39,13 +38,13 @@ const ProductCard = ({navigation, product}) => {
 
   useEffect(() => {
     if(userInfo) {
-      getUserProfile();
+      refetch();
     }
   }, [userInfo]);
 
   return (
     <TouchableOpacity onPress={()=> navigation.navigate("ProductDetailsScreen", {id: product?._id})} style={styles.container}>
-      <Image source={{uri: baseApiUrl + product?.imageUrls[0]}} style={styles.image} />
+      <Image source={{uri: product?.imageUrls[0]?.url}} style={styles.image} />
       <View style={styles.textContainer}>
         <Text style={styles.categoryTxt}>{product?.category?.name}</Text>
         <Text numberOfLines={2} style={styles.titleTxt}>{product?.title}</Text>

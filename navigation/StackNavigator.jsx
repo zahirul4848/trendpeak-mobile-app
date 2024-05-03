@@ -20,7 +20,7 @@ export const AuthStackScreen = ()=> {
   const {userInfo} = useSelector(state=> state.auth);
   return (
     <AuthStack.Navigator>
-      {userInfo?.name ? (
+      {userInfo && userInfo?.name !== undefined ? (
         <>
         <AuthStack.Screen
           name="ProfileScreen" 

@@ -31,7 +31,17 @@ const InformationScreen = () => {
         >
           <ListItem bottomDivider>
             <ListItem.Content>
-              <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia laudantium ipsum nihil modi, illo enim necessitatibus, repellat quidem, tempore temporibus incidunt iusto deleniti perspiciatis placeat fugiat accusamus cupiditate. Ratione, hic? Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia laudantium ipsum nihil modi, illo enim necessitatibus, repellat quidem, tempore temporibus incidunt iusto deleniti perspiciatis placeat fugiat accusamus cupiditate. Ratione, hic?</Text>
+              <Text style={{textAlign: "justify"}}>
+                At TrendPeak, we believe in the power of quality products to transform spaces and enhance lives. Founded on the principles of integrity, innovation, and customer satisfaction, our journey began with a vision to provide a comprehensive solution for electronics, sanitary, and hardware needs.
+                
+                Driven by a passion for excellence, we have curated a diverse range of products sourced from trusted manufacturers worldwide. With a meticulous focus on quality control, we ensure that every item in our inventory meets the highest standards of durability, performance, and reliability. 
+                
+                But our commitment to our customers goes beyond just offering great products. We are dedicated to providing an exceptional shopping experience, characterized by personalized service, prompt assistance, and hassle-free transactions. Whether you're a homeowner, contractor, or business owner, we're here to meet your needs and exceed your expectations. 
+                
+                As a team, we are constantly evolving and adapting to the changing needs of our customers and the dynamic landscape of the industry. Through continuous innovation and investment in technology, we strive to stay ahead of the curve and deliver cutting-edge solutions that add value to your projects and endeavors. 
+                
+                Above all, we are grateful for the trust and support of our customers, without whom none of this would be possible. Thank you for choosing TrendPeak as your partner in creating spaces that inspire, function, and endure. We look forward to serving you for many years to come.
+              </Text>
             </ListItem.Content>
           </ListItem>
         </ListItem.Accordion>
@@ -75,7 +85,17 @@ const InformationScreen = () => {
         >
           <ListItem bottomDivider>
             <ListItem.Content>
-              <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia laudantium ipsum nihil modi, illo enim necessitatibus, repellat quidem, tempore temporibus incidunt iusto deleniti perspiciatis placeat fugiat accusamus cupiditate. Ratione, hic?</Text>
+              <Text style={{textAlign: "justify"}}>
+                At TrendPeak, we believe in the power of quality products to transform spaces and enhance lives. Founded on the principles of integrity, innovation, and customer satisfaction, our journey began with a vision to provide a comprehensive solution for electronics, sanitary, and hardware needs.
+                
+                Driven by a passion for excellence, we have curated a diverse range of products sourced from trusted manufacturers worldwide. With a meticulous focus on quality control, we ensure that every item in our inventory meets the highest standards of durability, performance, and reliability. 
+                
+                But our commitment to our customers goes beyond just offering great products. We are dedicated to providing an exceptional shopping experience, characterized by personalized service, prompt assistance, and hassle-free transactions. Whether you're a homeowner, contractor, or business owner, we're here to meet your needs and exceed your expectations. 
+                
+                As a team, we are constantly evolving and adapting to the changing needs of our customers and the dynamic landscape of the industry. Through continuous innovation and investment in technology, we strive to stay ahead of the curve and deliver cutting-edge solutions that add value to your projects and endeavors. 
+                
+                Above all, we are grateful for the trust and support of our customers, without whom none of this would be possible. Thank you for choosing TrendPeak as your partner in creating spaces that inspire, function, and endure. We look forward to serving you for many years to come.
+              </Text>
             </ListItem.Content>
           </ListItem>
         </ListItem.Accordion>

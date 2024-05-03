@@ -24,7 +24,7 @@ const RegisterScreen = ({navigation}) => {
   }
   
   useEffect(() => {
-    if(userInfo) {
+    if(userInfo?.name !== undefined) {
       navigation.navigate("ProfileScreen");
     }
   }, [userInfo, navigation]);

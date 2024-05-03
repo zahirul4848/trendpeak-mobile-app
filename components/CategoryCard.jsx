@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 const CategoryCard = ({navigation, item}) => {
   return (
     <TouchableOpacity style={styles.container} onPress={()=> navigation.navigate("ProductListScreen", {categoryId: item?._id, title: item?.name})}>
-      <Image source={{uri: baseApiUrl + "/" + item.imageUrl}} style={styles.image} />
+      <Image source={{uri: item.imageUrl.url}} style={styles.image} />
       <View style={styles.wrapper}>
         <Text numberOfLines={1} style={styles.categoryText}>{item.name}</Text>
         <Text style={styles.itemText}>{item.products.length} items</Text>

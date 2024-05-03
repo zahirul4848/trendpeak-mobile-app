@@ -1,3 +1,3 @@
-const baseApiUrl = "http://192.168.1.177:5001";
+const baseApiUrl = "https://trendpeak-node-api.onrender.com";
 
 export {baseApiUrl};

@@ -40,7 +40,7 @@ const CartScreen = ({navigation}) => {
           <View style={styles.itemWrapper} key={product._id}>
             <View style={styles.leftColumn}>
               <Pressable onPress={()=> navigation.navigate("ProductDetailsScreen", {id: product?._id})}>
-                <Image source={{uri: baseApiUrl + product.imageUrls[0]}} style={styles.image} />
+                <Image source={{uri: product.imageUrls[0].url}} style={styles.image} />
               </Pressable>
               <View>
                 <Pressable onPress={()=> navigation.navigate("ProductDetailsScreen", {id: product?._id})}>

@@ -6,8 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 const WishlistScreen = ({navigation}) => {
   const {data: products, isFetching, refetch} = useGetWishlistQuery();
-  const [toggleWishlist] = useToggleWishlistMutation();
-  
+  const [toggleWishlist] = useToggleWishlistMutation(); 
   const handleToggleWishlist = async(productId)=> {
     try {
       await toggleWishlist({productId});
@@ -35,7 +34,7 @@ const WishlistScreen = ({navigation}) => {
             <View style={styles.itemContainer}>
               <View style={styles.itemWrapper}>
                 <TouchableOpacity onPress={()=> navigation.navigate("ProductDetailsScreen", {id: item?._id})} style={commonStyles.row}>
-                  <Image resizeMode="contain" source={{uri: baseApiUrl + item.imageUrls[0]}} style={styles.image} />
+                  <Image resizeMode="contain" source={{uri: item.imageUrls[0]?.url}} style={styles.image} />
                   <View style={styles.titleContainer}>
                     <Text>{item.title}</Text>
                     <Text style={commonStyles.boldTxt}>Tk. {item.price}</Text>
