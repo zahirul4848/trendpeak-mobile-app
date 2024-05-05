@@ -22,14 +22,15 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.zahirul48.TrendPeak"
+      "package": "com.zahirul48.TrendPeak",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "e647ca01-653f-4859-a51d-51aaf38eab39"
+        "projectId": "b72ae40a-9be5-4a4b-ad61-2a771bd3ca5e"
       }
     }
   }
