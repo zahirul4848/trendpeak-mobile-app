@@ -4,7 +4,8 @@ import { baseApiUrl, images } from "../constants";
 
 const {width, height} = Dimensions.get("screen");
 const ITEM_WIDTH = width;
-const ITEM_HEIGHT = height * 0.30;
+// const ITEM_HEIGHT = height * 0.30;
+const ITEM_HEIGHT = height * 0.45;
 const DOT_SIZE = 40;
 const DOT_SPACING = 10;
 const DOT_INDICATOR_SIZE = DOT_SIZE + DOT_SPACING;

@@ -17,7 +17,7 @@ const ProductDetailsHeaderRight = ({navigation, route}) => {
   const [getUserProfile, {data: userProfile}] = useLazyGetUserProfileQuery();
 
   const handleToggleWishlist = async()=> {
-    if(userInfo) {
+    if(userInfo?.email) {
       try {
         await toggleWishlist({productId: route?.params?.id});
         getUserProfile();
@@ -25,7 +25,7 @@ const ProductDetailsHeaderRight = ({navigation, route}) => {
         Alert.alert(err?.data?.message || err.error);
       }
     } else {
-      navigation.navigate("Login");
+      navigation.navigate("AuthStackScreen", {screen: "LoginScreen"});
     }
   }
   useEffect(() => {

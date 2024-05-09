@@ -24,7 +24,7 @@ const ProductCard = ({navigation, product}) => {
   }
 
   const handleToggleWishlist = async(productId)=> {
-    if(userInfo) {
+    if(userInfo?.email) {
       try {
         await toggleWishlist({productId});
         refetch();
@@ -32,7 +32,7 @@ const ProductCard = ({navigation, product}) => {
         Alert.alert(err?.data?.message || err.error);
       }
     } else {
-      navigation.navigate("Login");
+      navigation.navigate("AuthStackScreen", {screen: "LoginScreen"});
     }
   }
 

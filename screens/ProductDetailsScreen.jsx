@@ -37,7 +37,7 @@ const ProductDetailsScreen = ({navigation, route}) => {
   return (
     <View style={{flex: 1}}>
       {isLoading && (
-        <ActivityIndicator size="large" color={COLORS.primary} />
+        <ActivityIndicator style={{marginTop: 20}} size="large" color={COLORS.primary} />
       )}
       {product && (
         <>

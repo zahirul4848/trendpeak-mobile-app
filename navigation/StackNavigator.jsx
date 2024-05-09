@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/LoginScreen";
 import { COLORS } from "../constants";
 import {Entypo} from "@expo/vector-icons";
-import { Pressable } from "react-native";
+import { TouchableOpacity } from "react-native";
 import ForgotPasswordScreen from "../screens/ForgotPasswordScreen";
 import ResetPasswordScreen from "../screens/ResetPasswordScreen";
 import RegisterScreen from "../screens/RegisterScreen";
@@ -35,9 +35,9 @@ export const AuthStackScreen = ()=> {
           component={WishlistScreen}
           options={({navigation})=> ({
             headerLeft: ()=> (
-              <Pressable onPress={()=> navigation.goBack()}>
+              <TouchableOpacity style={{padding: 5}} onPress={()=> navigation.goBack()}>
                 <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-              </Pressable>
+              </TouchableOpacity>
             ),
             headerTitle: "Your Saved Items",
             headerTitleAlign: "center",
@@ -48,9 +48,9 @@ export const AuthStackScreen = ()=> {
           component={UserOrderListScreen}
           options={({navigation})=> ({
             headerLeft: ()=> (
-              <Pressable onPress={()=> navigation.goBack()}>
+              <TouchableOpacity style={{padding: 5}} onPress={()=> navigation.goBack()}>
                 <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-              </Pressable>
+              </TouchableOpacity>
             ),
             headerTitle: "Your Orders",
             headerTitleAlign: "center",
@@ -61,9 +61,9 @@ export const AuthStackScreen = ()=> {
           component={OrderDetailsScreen}
           options={({navigation})=> ({
             headerLeft: ()=> (
-              <Pressable onPress={()=> navigation.navigate("UserOrderListScreen")}>
+              <TouchableOpacity style={{padding: 5}} onPress={()=> navigation.navigate("UserOrderListScreen")}>
                 <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-              </Pressable>
+              </TouchableOpacity>
             ),
             headerTitle: "Order Details",
             headerTitleAlign: "center",
@@ -74,9 +74,9 @@ export const AuthStackScreen = ()=> {
           component={ProfileSettingsScreen}
           options={({navigation})=> ({
             headerLeft: ()=> (
-              <Pressable onPress={()=> navigation.goBack()}>
+              <TouchableOpacity style={{padding: 5}} onPress={()=> navigation.goBack()}>
                 <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-              </Pressable>
+              </TouchableOpacity>
             ),
             headerTitle: "Profile Settings",
             headerTitleAlign: "center",
@@ -98,9 +98,9 @@ export const AuthStackScreen = ()=> {
           component={ForgotPasswordScreen}
           options={({navigation})=> ({
             headerLeft: ()=> (
-              <Pressable onPress={()=> navigation.navigate("LoginScreen")}>
+              <TouchableOpacity style={{padding: 5}} onPress={()=> navigation.navigate("LoginScreen")}>
                 <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-              </Pressable>
+              </TouchableOpacity>
             ),
             headerTitle: "Forgot Password",
             headerTransparent: true,
@@ -111,9 +111,9 @@ export const AuthStackScreen = ()=> {
           component={ResetPasswordScreen}
           options={({navigation})=> ({
             headerLeft: ()=> (
-              <Pressable onPress={()=> navigation.navigate("ForgotPasswordScreen")}>
+              <TouchableOpacity style={{padding: 5}} onPress={()=> navigation.navigate("ForgotPasswordScreen")}>
                 <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-              </Pressable>
+              </TouchableOpacity>
             ),
             headerTitle: "Reset Password",
             headerTransparent: true,

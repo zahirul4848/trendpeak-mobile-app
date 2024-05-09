@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/authSlice';
 import { COLORS, commonStyles } from '../constants';
-import { Avatar, Divider } from '@rneui/themed';
+import { Divider } from '@rneui/themed';
 import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons';
 import { resetCart, resetShippingInfo } from '../store/cartSlice';
 import { setItem } from '../utils/asyncStorage';

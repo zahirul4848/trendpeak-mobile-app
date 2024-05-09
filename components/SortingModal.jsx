@@ -43,7 +43,7 @@ const SortingModal = ({toggleModal, openModal, setOrder}) => {
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             title="Default"
-            containerStyle={{ backgroundColor: "transparent", padding: 5,}}
+            containerStyle={{ padding: 5,}}
           />
           <CheckBox
             checked={selectedIndex === 1}
@@ -51,7 +51,7 @@ const SortingModal = ({toggleModal, openModal, setOrder}) => {
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             title="New Arrivals"
-            containerStyle={{ backgroundColor: "transparent", padding: 5,}}
+            containerStyle={{ padding: 5,}}
           />
           <CheckBox
             checked={selectedIndex === 2}
@@ -59,7 +59,7 @@ const SortingModal = ({toggleModal, openModal, setOrder}) => {
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             title="Name A to Z"
-            containerStyle={{ backgroundColor: "transparent", padding: 5, }}
+            containerStyle={{ padding: 5, }}
           />
           <CheckBox
             checked={selectedIndex === 3}
@@ -67,7 +67,7 @@ const SortingModal = ({toggleModal, openModal, setOrder}) => {
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             title="Name Z to A"
-            containerStyle={{ backgroundColor: "transparent", padding: 5, }}
+            containerStyle={{ padding: 5, }}
           />
           <CheckBox
             checked={selectedIndex === 4}
@@ -75,7 +75,7 @@ const SortingModal = ({toggleModal, openModal, setOrder}) => {
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             title="Price Low to High"
-            containerStyle={{ backgroundColor: "transparent", padding: 5, }}
+            containerStyle={{ padding: 5, }}
           />
           <CheckBox
             checked={selectedIndex === 5}
@@ -83,7 +83,7 @@ const SortingModal = ({toggleModal, openModal, setOrder}) => {
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             title="Price High to Low"
-            containerStyle={{ backgroundColor: "transparent", padding: 5, }}
+            containerStyle={{ padding: 5, }}
           />
           <CheckBox
             checked={selectedIndex === 6}
@@ -91,7 +91,7 @@ const SortingModal = ({toggleModal, openModal, setOrder}) => {
             checkedIcon="dot-circle-o"
             uncheckedIcon="circle-o"
             title="Top Rated"
-            containerStyle={{ backgroundColor: "transparent", padding: 5, }}
+            containerStyle={{ padding: 5, }}
           />
         </View>
       </View>

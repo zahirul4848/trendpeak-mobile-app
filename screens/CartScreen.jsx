@@ -17,10 +17,10 @@ const CartScreen = ({navigation}) => {
   const totalPrice = itemsPrice + shippingPrice;
 
   const handleCheckout = ()=> {
-    if(userInfo) {
+    if(userInfo?.email) {
       navigation.navigate("CheckoutScreen");
     } else {
-      navigation.navigate("LoginScreen");
+      navigation.navigate("AuthStackScreen", {screen: "LoginScreen"});
     }
   }
 

@@ -2,7 +2,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { AppTabScreen } from './BottomTabNavigator';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProductDetailsScreen from '../screens/ProductDetailsScreen';
-import { Pressable } from 'react-native';
+import { Pressable, TouchableOpacity } from 'react-native';
 import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import ProductDetailsHeaderRight from '../components/ProductDetailsHeaderRight';
 import ProductListScreen from '../screens/ProductListScreen';
@@ -33,9 +33,9 @@ const AppStackScreen = ()=> {
         component={ProductDetailsScreen}
         options={({navigation, route})=> ({
           headerLeft: ()=> (
-            <Pressable onPress={()=> navigation.goBack()}>
+            <TouchableOpacity style={{padding: 5}} onPress={()=> navigation.goBack()}>
               <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-            </Pressable>
+            </TouchableOpacity>
           ),
           headerRight: ()=> (
             <ProductDetailsHeaderRight route={route} navigation={navigation} />
@@ -48,9 +48,9 @@ const AppStackScreen = ()=> {
         component={ProductListScreen}
         options={({navigation, route})=> ({
           headerLeft: ()=> (
-            <Pressable onPress={()=> navigation.goBack()}>
+            <TouchableOpacity onPress={()=> navigation.goBack()}>
               <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-            </Pressable>
+            </TouchableOpacity>
           ),
           headerRight: ()=> (
             <Pressable style={{position: "relative", marginRight: 20}} onPress={()=> navigation.navigate("CartScreen")}>
@@ -67,9 +67,9 @@ const AppStackScreen = ()=> {
         component={CheckoutScreen}
         options={({navigation})=> ({
           headerLeft: ()=> (
-            <Pressable onPress={()=> navigation.goBack()}>
+            <TouchableOpacity style={{padding: 5}} onPress={()=> navigation.goBack()}>
               <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-            </Pressable>
+            </TouchableOpacity>
           ),
           headerTitle: "Checkout",
           headerTitleAlign: 'center',
@@ -123,9 +123,9 @@ export const DrawerNavigator = ()=> {
           ),
           title: "Search",
           headerLeft: ()=> (
-            <Pressable style={{marginLeft: 10}} onPress={()=> navigation.goBack()}>
+            <TouchableOpacity style={{marginLeft: 10, padding: 5}} onPress={()=> navigation.goBack()}>
               <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-            </Pressable>
+            </TouchableOpacity>
           ),
           headerRight: ()=> (
             <Pressable style={{position: "relative", marginRight: 20}} onPress={()=> navigation.navigate("CartScreen")}>
@@ -145,9 +145,9 @@ export const DrawerNavigator = ()=> {
           ),
           title: "All Categories",
           headerLeft: ()=> (
-            <Pressable style={{marginLeft: 10}} onPress={()=> navigation.goBack()}>
+            <TouchableOpacity style={{marginLeft: 10, padding: 5}} onPress={()=> navigation.goBack()}>
               <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-            </Pressable>
+            </TouchableOpacity>
           ),
           headerTitleAlign: 'center',
         })}
@@ -161,9 +161,9 @@ export const DrawerNavigator = ()=> {
           ),
           title: "Information",
           headerLeft: ()=> (
-            <Pressable style={{marginLeft: 10}} onPress={()=> navigation.goBack()}>
+            <TouchableOpacity style={{marginLeft: 10, padding: 5}} onPress={()=> navigation.goBack()}>
               <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-            </Pressable>
+            </TouchableOpacity>
           ),
           headerTitleAlign: 'center',
         })}

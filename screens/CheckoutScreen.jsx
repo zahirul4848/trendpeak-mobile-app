@@ -52,8 +52,8 @@ const CheckoutScreen = ({navigation}) => {
   }
 
   useEffect(() => {
-    if(!userInfo) {
-      navigation.navigate("Login");
+    if(userInfo?.email === undefined) {
+      navigation.navigate("AuthStackScreen", {screen: "LoginScreen"});
     }
   }, [userInfo])
   

@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AuthStackScreen } from "./StackNavigator";
 import { Ionicons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
 import { COLORS, icons } from "../constants";
-import { Image, Pressable } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import CategoryScreen from "../screens/CategoryScreen";
 import HomeScreen from "../screens/HomeScreen";
@@ -49,9 +49,9 @@ export const AppTabScreen = () => {
           headerTitle: "All Categories",
           headerTitleAlign: "center",
           headerLeft: ()=> (
-            <Pressable style={{marginLeft: 10}} onPress={()=> navigation.goBack()}>
+            <TouchableOpacity style={{marginLeft: 10, padding: 5}} onPress={()=> navigation.goBack()}>
               <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-            </Pressable>
+            </TouchableOpacity>
           ),
         })}
       />
@@ -60,9 +60,9 @@ export const AppTabScreen = () => {
         component={CartScreen}
         options={({navigation})=> ({
           headerLeft: ()=> (
-            <Pressable style={{marginLeft: 10}} onPress={()=> navigation.goBack()}>
+            <TouchableOpacity style={{marginLeft: 10, padding: 5}} onPress={()=> navigation.goBack()}>
               <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
-            </Pressable>
+            </TouchableOpacity>
           ),
           title: `Cart(${cart.length})`,
           headerTitle: `Your Cart (${cart.length})`,

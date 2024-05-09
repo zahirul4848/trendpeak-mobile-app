@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View, FlatList, ScrollView, RefreshControl, Platform, StatusBar, Image } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View, FlatList, ScrollView, RefreshControl, Platform, StatusBar, Image } from 'react-native'
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { COLORS, icons } from '../constants';
 import CarouselCardItem from "../components/CarouselCardItem";
