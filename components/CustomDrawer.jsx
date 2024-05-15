@@ -45,11 +45,11 @@ const CustomDrawer = (props) => {
             <Entypo name="mobile" size={20} color={COLORS.primary} />
             <Text style={{color: COLORS.primary}}>+88 01766 933 850</Text>
           </View>
-          <Divider style={{marginVertical: 10}} />
-          <View style={commonStyles.row}>
+          {/* <Divider style={{marginVertical: 10}} /> */}
+          {/* <View style={commonStyles.row}>
             <Entypo name="email" size={20} color={COLORS.primary} />
             <Text style={{color: COLORS.primary}}>info@trendpeakbd.com</Text>
-          </View>
+          </View> */}
         </View>
       </View>
       <Divider style={{marginVertical: 10}} />

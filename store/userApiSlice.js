@@ -64,6 +64,13 @@ export const userApiSlice = createApi({
         body: data,
       }),
     }),
+    deleteMyAccount: builder.mutation({
+      query: (data)=> ({
+        url: `${USER_URL}/deleteme`,
+        method: "DELETE",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -77,4 +84,5 @@ export const {
   useLazyGetUserProfileQuery,
   useUpdateUserProfileMutation,
   useForgotPasswordMutation,
+  useDeleteMyAccountMutation,
 } = userApiSlice;

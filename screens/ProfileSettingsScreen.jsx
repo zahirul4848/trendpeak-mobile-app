@@ -1,24 +1,27 @@
-import { ActivityIndicator, Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Alert, StyleSheet, Text, TextInput, TouchableOpacity, View, Button } from 'react-native'
 import React from 'react'
 import { COLORS, commonStyles } from '../constants'
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { useGetUserProfileQuery, useUpdateUserProfileMutation } from '../store/userApiSlice';
+import { useDeleteMyAccountMutation, useGetUserProfileQuery, useUpdateUserProfileMutation } from '../store/userApiSlice';
 import { CheckBox } from '@rneui/themed';
 import { useEffect } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
-import { setUserInfo } from '../store/authSlice';
+import { logout, setUserInfo } from '../store/authSlice';
 import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
 
-const ProfileSettingsScreen = () => {
+const ProfileSettingsScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [changePassword, setChangePassword] = useState(false);
+  const [isShow, setIsShow] = useState(false);
+  const [deletePassword, setDeletePassword] = useState("");
   const {data: userProfile, isLoading, refetch} = useGetUserProfileQuery();
   const [updateUserProfile, {isLoading: loadingUpdate}] = useUpdateUserProfileMutation();
+  const [deleteMyAccount, {isLoading: loadingDelete}] = useDeleteMyAccountMutation();
  
   const handleSubmit = async()=> {
     if(password && password !== confirmPassword) {
@@ -36,6 +39,21 @@ const ProfileSettingsScreen = () => {
       } catch (err) {
         Alert.alert("Error", err?.data?.message || err.error);
       }
+    }
+  }
+
+  const handleDelete = async()=> {
+    try {
+      await deleteMyAccount({
+        email: userProfile.email,
+        password: deletePassword,
+      }).unwrap();
+      dispatch(logout());
+      Alert.alert("Success", "User deleted successfully");
+      setIsShow(false);
+      navigation.navigate("HomeScreen");
+    } catch (err) {
+      Alert.alert("Error", err?.data?.message || err.error);
     }
   }
 
@@ -121,8 +139,37 @@ const ProfileSettingsScreen = () => {
             </TouchableOpacity>
           </View>
           </>
-        )}  
+        )}
+        <View style={{marginTop: 100}}>
+          <TouchableOpacity 
+            onPress={()=> setIsShow((prev)=> !prev)} 
+            style={styles.deleteToggle}
+          >
+            <Text style={styles.deleteToggleTxt}>Delete My Account</Text>
+          </TouchableOpacity>
+          {isShow && userProfile && (
+            <>
+            <TextInput
+              style={styles.textInput}
+              secureTextEntry
+              placeholder='Password'
+              value={deletePassword}
+              onChangeText={(text)=> setDeletePassword(text)}
+            />
+            <TouchableOpacity
+              disabled={loadingDelete}
+              onPress={handleDelete}
+              style={styles.deleteBtn}
+            >
+              <Text style={styles.deleteBtnTxt}>Delete Account</Text>
+            </TouchableOpacity>
+            </>
+          )}
+        </View>
       </View>
+      
+      
+
     </KeyboardAvoidingWrapper>
   )
 }
@@ -135,7 +182,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 50,
+    marginBottom: 70,
   },
   iconContainer: {
     backgroundColor: COLORS.primary,
@@ -177,4 +224,22 @@ const styles = StyleSheet.create({
     color: COLORS.lightWhite,
     fontWeight: "bold",
   },
+  deleteToggle: {
+    padding: 12,
+  },
+  deleteToggleTxt: {
+    color: "red",
+    fontWeight: "bold",
+  },
+  deleteBtn: {
+    padding: 12,
+    marginTop: 10,
+    backgroundColor: COLORS.secondary,
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  deleteBtnTxt: {
+    color: "red",
+    fontWeight: "bold",
+  }
 });

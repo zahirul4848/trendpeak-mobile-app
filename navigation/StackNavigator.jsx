@@ -27,7 +27,7 @@ export const AuthStackScreen = ()=> {
           component={ProfileScreen}
           options={{
             headerTitleAlign: "center",
-            headerTitle: "User Profile"
+            headerTitle: "Profile"
           }}
         />
         <AuthStack.Screen

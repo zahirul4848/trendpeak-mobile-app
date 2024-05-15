@@ -121,7 +121,7 @@ export const DrawerNavigator = ()=> {
             focused ? <Ionicons name="search" size={size} color={COLORS.lightWhite}/> : 
             <Ionicons name="search" size={size} color={COLORS.secondary}/>
           ),
-          title: "Search",
+          title: "Products",
           headerLeft: ()=> (
             <TouchableOpacity style={{marginLeft: 10, padding: 5}} onPress={()=> navigation.goBack()}>
               <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />

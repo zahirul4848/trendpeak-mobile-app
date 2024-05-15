@@ -46,6 +46,7 @@ const ProductListScreen = ({navigation, route}) => {
             borderRadius: 10,
             margin: 0,
             width: "80%",
+            marginTop: 5
           }}
           inputStyle={{
             color: COLORS.primary,
