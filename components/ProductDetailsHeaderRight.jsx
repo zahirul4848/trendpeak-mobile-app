@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 const ProductDetailsHeaderRight = ({navigation, route}) => {
   const { cart } = useSelector(state=> state.cart);
   const { userInfo } = useSelector(state=> state.auth);
-  const url = `http://192.168.1.177:5173/product/${route?.params?.id}`;
+  const url = `https://trendpeakbd.com/product/${route?.params?.slug}`;
   
   const [toggleWishlist] = useToggleWishlistMutation();
   const [getUserProfile, {data: userProfile}] = useLazyGetUserProfileQuery();

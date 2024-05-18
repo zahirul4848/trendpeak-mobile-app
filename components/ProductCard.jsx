@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import CartModal from './CartModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
-import { useGetUserProfileQuery, useLazyGetUserProfileQuery, useToggleWishlistMutation } from '../store/userApiSlice';
+import { useGetUserProfileQuery, useToggleWishlistMutation } from '../store/userApiSlice';
 import { useEffect } from 'react';
 
 const ProductCard = ({navigation, product}) => {
@@ -43,7 +43,7 @@ const ProductCard = ({navigation, product}) => {
   }, [userInfo]);
 
   return (
-    <TouchableOpacity onPress={()=> navigation.navigate("ProductDetailsScreen", {id: product?._id})} style={styles.container}>
+    <TouchableOpacity onPress={()=> navigation.navigate("ProductDetailsScreen", {id: product?._id, slug: product?.slug})} style={styles.container}>
       <Image source={{uri: product?.imageUrls[0]?.url}} style={styles.image} />
       <View style={styles.textContainer}>
         <Text style={styles.categoryTxt}>{product?.category?.name}</Text>
