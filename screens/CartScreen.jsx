@@ -13,7 +13,7 @@ const CartScreen = ({navigation}) => {
 
   const toPrice = (num)=> Number(num.toFixed(2));
   const itemsPrice = toPrice(cart.reduce((a, c)=> a + c.price * c.count, 0));
-  const shippingPrice = itemsPrice > 5000 ? toPrice(0) : toPrice(80);
+  const shippingPrice = itemsPrice > 999 ? toPrice(0) : toPrice(80);
   const totalPrice = itemsPrice + shippingPrice;
 
   const handleCheckout = ()=> {
