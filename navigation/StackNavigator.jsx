@@ -102,7 +102,7 @@ export const AuthStackScreen = ()=> {
                 <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />
               </TouchableOpacity>
             ),
-            headerTitle: "Forgot Password",
+            headerTitle: "",
             headerTransparent: true,
           })}
         />

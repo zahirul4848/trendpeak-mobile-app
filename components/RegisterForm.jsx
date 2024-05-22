@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, Alert } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, Alert, Dimensions } from 'react-native'
 import React, { useState } from 'react';
 import { MaterialIcons, Fontisto, Feather, Ionicons } from '@expo/vector-icons';
 import {COLORS} from "../constants";
 import { useNavigation } from '@react-navigation/native';
 
+const width = Dimensions.get("window").width;
 
 const RegisterForm = ({userRegistration, isLoading}) => {
   const navigation = useNavigation();
@@ -51,7 +52,7 @@ const RegisterForm = ({userRegistration, isLoading}) => {
           value={name}
           onChangeText={(text)=> setName(text)}
         />
-        <Ionicons style={styles.icon(25)} name="person" size={24} color={COLORS.primary} />
+        <Ionicons style={styles.icon(width > 450 ? 50 : 25)} name="person" size={22} color={COLORS.primary} />
       </View>
       <View style={styles.inputView}>
         <TextInput
@@ -61,7 +62,7 @@ const RegisterForm = ({userRegistration, isLoading}) => {
           value={email}
           onChangeText={(text)=> setEmail(text)}
         />
-        <MaterialIcons style={styles.icon(25)} name="alternate-email" size={24} color={COLORS.primary} />
+        <MaterialIcons style={styles.icon(width > 450 ? 50 : 25)} name="alternate-email" size={22} color={COLORS.primary} />
       </View>
       <View style={styles.inputView}>
         <TextInput
@@ -72,14 +73,14 @@ const RegisterForm = ({userRegistration, isLoading}) => {
           secureTextEntry={!isVisible}
           autoCapitalize='none'
         />
-        <Fontisto name="locked" size={22} color={COLORS.primary} style={styles.icon(28)} />
+        <Fontisto name="locked" size={20} color={COLORS.primary} style={styles.icon(width > 450 ? 50 : 28)} />
         {isVisible ? 
         <TouchableOpacity onPressOut={()=> setIsVisible(prev=> !prev)} style={styles.rightIcon}>
           <Feather name="eye" size={22} color="gray" /> 
         </TouchableOpacity>
         : 
         <TouchableOpacity onPressIn={()=> setIsVisible(prev=> !prev)} style={styles.rightIcon}>
-          <Feather name="eye-off" size={24} color="gray" />
+          <Feather name="eye-off" size={22} color="gray" />
         </TouchableOpacity>
         }
       </View>
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   signInText: {
     fontSize: 18,
     fontWeight: 'bold',
-    marginLeft: 18,
+    marginLeft: width > 450 ? 45 : 20,
   },
   inputView: {
     flexDirection: 'row',
@@ -126,13 +127,13 @@ const styles = StyleSheet.create({
   },
   icon: (leftSize)=> ({
     position: "absolute",
-    top: 8,
+    top: 9,
     left: leftSize,
   }),
   rightIcon: {
     position: "absolute",
-    top: 8,
-    right: 30,
+    top: 9,
+    right: width > 450 ? 50 : 30,
   },
   signInButton: {
     width: "90%",

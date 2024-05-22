@@ -124,14 +124,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.lightWhite,
-    // marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    // paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     marginTop: 0,
   },
   topContainer: {
     flexDirection: 'row',
     justifyContent:'space-between',
     //alignItems: 'center',
-    marginTop: 10,
+    paddingTop: 10,
   },
   btnContainer: {
     width: 47.5,

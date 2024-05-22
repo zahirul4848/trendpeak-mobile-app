@@ -34,6 +34,10 @@ const CheckoutScreen = ({navigation}) => {
   }
 
   const handleCreateOrder = async()=> {
+    if(!shippingInfo.shippingAddress) {
+      Alert.alert("Error", "Please select shipping address");
+      return;
+    }
     try {
       const response = await createOrder({
         orderItems: cart,
@@ -175,7 +179,7 @@ const CheckoutScreen = ({navigation}) => {
         openModal={openModal}
       />
       <View style={{height: 100}}>
-        <CheckoutFooter totalPrice={totalPrice} handleCreateOrder={handleCreateOrder} />
+        <CheckoutFooter isLoading={isLoading} totalPrice={totalPrice} handleCreateOrder={handleCreateOrder} />
       </View>
     </View>
   )

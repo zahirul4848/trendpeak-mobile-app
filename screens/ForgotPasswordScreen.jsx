@@ -26,7 +26,7 @@ const ForgotPasswordScreen = ({navigation}) => {
       <KeyboardAvoidingWrapper>
         <SafeAreaView >
           <View style={styles.iconContainer}>
-            <MaterialCommunityIcons name="lock-question" size={150} color={COLORS.primary} />
+            <MaterialCommunityIcons name="lock-question" size={100} color={COLORS.primary} />
           </View>
           <Text style={styles.title}>Forgot Password?</Text>
           <Text style={styles.description}>Please enter your email address registered on your account</Text>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   iconContainer: {
-    marginTop: 20,
+    marginTop: 70,
     alignItems: "center",
     justifyContent: "center",
   },

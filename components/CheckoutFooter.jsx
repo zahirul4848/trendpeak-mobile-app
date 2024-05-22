@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { COLORS, commonStyles } from '../constants'
 
-const CheckoutFooter = ({totalPrice, handleCreateOrder}) => {
+const CheckoutFooter = ({totalPrice, handleCreateOrder, isLoading}) => {
   
   return (
     <View style={styles.container}>
@@ -10,7 +10,7 @@ const CheckoutFooter = ({totalPrice, handleCreateOrder}) => {
         <Text style={commonStyles.subTxt}>Total Price</Text>
         <Text style={styles.priceText}>Tk.{totalPrice}</Text>
       </View>
-      <TouchableOpacity style={styles.button} onPress={handleCreateOrder}>
+      <TouchableOpacity disabled={isLoading} style={styles.button} onPress={handleCreateOrder}>
         <Text style={styles.buttonText}>Confirm Order</Text>
       </TouchableOpacity>
     </View>
