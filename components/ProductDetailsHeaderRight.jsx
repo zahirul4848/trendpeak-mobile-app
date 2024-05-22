@@ -39,9 +39,9 @@ const ProductDetailsHeaderRight = ({navigation, route}) => {
       <TouchableOpacity style={styles.badgeContainer} onPress={handleToggleWishlist}>
         {userProfile?.wishlist?.includes(route?.params?.id) ? <AntDesign name="heart" size={24} color={COLORS.primary} /> : <AntDesign name="hearto" size={24} color={COLORS.secondary} />}
       </TouchableOpacity>
-      <TouchableOpacity style={styles.badgeContainer} onPress={()=> Linking.openURL(url)}>
+      {/* <TouchableOpacity style={styles.badgeContainer} onPress={()=> Linking.openURL(url)}>
         <AntDesign name="sharealt" size={24} color={COLORS.primary} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity style={styles.badgeContainer} onPress={()=> navigation.navigate("CartScreen")}>
         <MaterialCommunityIcons name="shopping-outline" size={24} color={COLORS.primary} />
         <Badge containerStyle={styles.badge} value={cart.length} status='error' />

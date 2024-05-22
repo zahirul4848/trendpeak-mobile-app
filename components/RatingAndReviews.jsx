@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 const RatingAndReviews = ({product, refetch}) => {
   const {userInfo} = useSelector(state=> state.auth);
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(5);
   const [comment, setComment] = useState("");
   const [createReview, {isLoading, isSuccess}] = useCreateReviewMutation();
 
@@ -20,7 +20,11 @@ const RatingAndReviews = ({product, refetch}) => {
   };
 
   const handleSubmit = async()=> {
-    if(userInfo) {
+    if(!comment) {
+      Alert.alert("Error", "Comment is required");
+      return;
+    }
+    if(userInfo.name) {
       try {
         const response = await createReview({
           id: product._id, data: {comment, rating}
@@ -77,8 +81,8 @@ const RatingAndReviews = ({product, refetch}) => {
               <Text style={{fontWeight: "bold"}}>{review.clientName}</Text>
             </View>
             <View style={commonStyles.row}>
-              <AntDesign name="star" size={25} color="gold" />
-              <Text style={{fontSize: 20}}>{review.rating}</Text>
+              <AntDesign name="star" size={20} color="gold" />
+              <Text style={{fontSize: 18}}>{review.rating}</Text>
             </View>
           </View>
           <Text>{review.comment}</Text>

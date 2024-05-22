@@ -15,7 +15,7 @@ const ForgotPasswordScreen = ({navigation}) => {
     try {
       const response = await forgotPassword({email}).unwrap();
       Alert.alert(response.message);
-      navigation.navigate("Home");
+      navigation.navigate("HomeScreen");
     } catch (err) {
       Alert.alert("Error", err?.data?.message || err.error);
     }
