@@ -23,7 +23,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.zahirul48.trendpeakbd",
-      "versionCode": 3
+      "versionCode": 4
     },
     "web": {
       "favicon": "./assets/favicon.png"

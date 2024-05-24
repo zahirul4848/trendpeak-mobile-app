@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+    marginBottom: 60,
   },
   itemWrapper: {
     height: 100,

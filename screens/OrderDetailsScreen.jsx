@@ -97,9 +97,10 @@ export default OrderDetailsScreen;
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
-    marginVertical: 20,
+    marginTop: 10,
     flexDirection: "column",
     rowGap: 20,
+    marginBottom: 60,
   },
   wrapper: {
     backgroundColor: COLORS.lightWhite,

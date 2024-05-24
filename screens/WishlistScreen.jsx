@@ -59,6 +59,7 @@ export default WishlistScreen
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+    marginBottom: 60,
   },
   emptyList: {
     fontSize: 16,
