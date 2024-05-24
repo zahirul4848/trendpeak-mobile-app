@@ -54,7 +54,7 @@ const CustomDrawer = (props) => {
       </View>
       <Divider style={{marginVertical: 10}} />
       <View style={styles.footerContainer}>
-        {userInfo ? (
+        {userInfo?.email ? (
           <TouchableOpacity onPress={handleLogout} style={commonStyles.row}>
             <Entypo name="log-out" size={24} color={COLORS.secondary} />
             <Text style={styles.itemTxt}>Logout</Text>

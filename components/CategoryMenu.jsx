@@ -10,7 +10,7 @@ const CategoryMenu = ({item, navigation}) => {
       <View style={styles.iconContainer}>
         <Image source={{uri: item.imageUrl?.url}} style={styles.image} />
       </View>
-      <Text>{item.name}</Text>
+      <Text numberOfLines={1}>{item.name}</Text>
     </TouchableOpacity>
   )
 }

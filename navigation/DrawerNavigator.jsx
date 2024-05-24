@@ -143,7 +143,7 @@ export const DrawerNavigator = ()=> {
             focused ? <Image source={icons.categoryWhite} style={{height: 18, width: 18, resizeMode: "cover"}} /> : 
             <Image source={icons.categorySecondary} style={{height: 18, width: 18, resizeMode: "cover"}} />
           ),
-          title: "All Categories",
+          title: "Categories",
           headerLeft: ()=> (
             <TouchableOpacity style={{marginLeft: 10, padding: 5}} onPress={()=> navigation.goBack()}>
               <Entypo name="arrow-long-left" size={24} color={COLORS.primary} />

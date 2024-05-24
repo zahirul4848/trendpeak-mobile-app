@@ -1,6 +1,5 @@
-import { FlatList, RefreshControl, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, RefreshControl, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { SearchBar } from '@rneui/themed'
 import ProductCard from '../components/ProductCard';
 import { Ionicons } from '@expo/vector-icons';
 import { useGetAllProductsQuery } from '../store/productApiSlice';
@@ -30,37 +29,24 @@ const ProductListScreen = ({navigation, route}) => {
   
   return (
     <View style={styles.container}>
-      <View style={commonStyles.rowSB}>
-        <SearchBar
-          placeholder="Search product..."
-          onChangeText={(text)=> updateSearch(text)}
-          value={search}
-          showLoading={isLoading}
-          returnKeyType='search'
-          lightTheme
-          containerStyle={{
-            backgroundColor: "transparent",
-            borderColor: "transparent",
-            border: "none",
-            padding: 0,
-            borderRadius: 10,
-            margin: 0,
-            width: "80%",
-            marginTop: 5
-          }}
-          inputStyle={{
-            color: COLORS.primary,
-          }}
-          inputContainerStyle={{
-            backgroundColor: COLORS.lightGray,
-            //borderRadius: 10,
-          }}
-        />
+      <View style={[commonStyles.rowSB, {gap: 20}]}>
+        <View style={styles.searchContainer}>
+          <Ionicons name="search" size={24} />
+          <TextInput
+            returnKeyLabel="search" 
+            returnKeyType="search" 
+            style={styles.searchInput} 
+            placeholder="Search"
+            onChangeText={(text)=> updateSearch(text)}
+            onSubmitEditing={updateSearch}
+            value={search}
+          />
+        </View>
         <TouchableOpacity
           onPress={()=> setOpenModal(prev=> !prev)}
           style={styles.btnContainer}
         >
-          <Ionicons name="filter" size={24} color={COLORS.secondary} />
+          <Ionicons name="filter" size={26} color="black" />
         </TouchableOpacity>
       </View>
       <View style={styles.productsContainer}>
@@ -99,12 +85,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   btnContainer: {
-    width: 47.5,
-    height: 47.5,
-    backgroundColor: COLORS.lightGray,
-    borderRadius: 1,
+    width: 40,
+    height: 40,
+    backgroundColor: COLORS.gray,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 1
   },
   btnImg: {
     width: 30,
@@ -138,4 +125,21 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+
+  searchContainer: {
+    height: 40,
+    backgroundColor: COLORS.gray,
+    borderRadius: 10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+  },
+  searchInput: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: COLORS.primary,
+    marginLeft: 10,
+    width: "100%",
+  }
 });

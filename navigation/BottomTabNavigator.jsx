@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AuthStackScreen } from "./StackNavigator";
 import { Ionicons, MaterialCommunityIcons, Entypo } from '@expo/vector-icons';
-import { COLORS, icons } from "../constants";
-import { Image, TouchableOpacity } from "react-native";
+import { COLORS } from "../constants";
+import { TouchableOpacity } from "react-native";
 import { useSelector } from "react-redux";
 import CategoryScreen from "../screens/CategoryScreen";
 import HomeScreen from "../screens/HomeScreen";
@@ -16,11 +16,13 @@ export const AppTabScreen = () => {
   return (
     <AppTab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: COLORS.primary,
-        tabBarInactiveTintColor: COLORS.secondary,
+        tabBarActiveTintColor: COLORS.lightWhite,
+        tabBarInactiveTintColor: COLORS.lightGray2,
         tabBarHideOnKeyboard: true,
         tabBarStyle: {
-          backgroundColor: COLORS.lightWhite,
+          backgroundColor: COLORS.primary,
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
         }
       }}    
     >
@@ -30,8 +32,8 @@ export const AppTabScreen = () => {
         options={{
           headerShown: false,
           tabBarIcon: ({color, size, focused})=> (
-            focused ? <Ionicons name="home" size={size} color={COLORS.primary}/> : 
-            <Ionicons name="home-outline" size={size} color={COLORS.secondary}/>
+            focused ? <Ionicons name="home" size={size} color={COLORS.lightWhite}/> : 
+            <Ionicons name="home-outline" size={size} color={COLORS.lightGray2}/>
           ),
           title: "Home",
         }}
@@ -42,8 +44,8 @@ export const AppTabScreen = () => {
         options={({navigation})=> ({
           //headerShown: false,
           tabBarIcon: ({color, size, focused})=> (
-            focused ? <Image source={icons.categoryPrimary} style={{height: 20, width: 20, resizeMode: "cover"}} /> : 
-            <Image source={icons.categorySecondary} style={{height: 20, width: 20, resizeMode: "cover"}} />
+            focused ? <Ionicons name="grid" size={size} color={COLORS.lightWhite} /> : 
+            <Ionicons name="grid-outline" size={size} color={COLORS.lightGray2} />
           ),
           title: "Category",
           headerTitle: "All Categories",
@@ -68,8 +70,8 @@ export const AppTabScreen = () => {
           headerTitle: `Your Cart (${cart.length})`,
           headerTitleAlign: 'center',
           tabBarIcon: ({color, size, focused})=> (
-            focused ? <MaterialCommunityIcons name="shopping" size={size} color={COLORS.primary} /> : 
-            <MaterialCommunityIcons name="shopping-outline" size={size} color={COLORS.secondary} />
+            focused ? <MaterialCommunityIcons name="shopping" size={size} color={COLORS.lightWhite} /> : 
+            <MaterialCommunityIcons name="shopping-outline" size={size} color={COLORS.lightGray2} />
           ),
         })}
       />
@@ -79,8 +81,8 @@ export const AppTabScreen = () => {
         options={{
           headerShown: false,
           tabBarIcon: ({color, size, focused})=> (
-            focused ? <Ionicons name="person" size={size} color={COLORS.primary} /> : 
-            <Ionicons name="person-outline" size={size} color={COLORS.secondary} />
+            focused ? <Ionicons name="person" size={size} color={COLORS.lightWhite} /> : 
+            <Ionicons name="person-outline" size={size} color={COLORS.lightGray2} />
           ),
           title: userInfo?.name ? "Profile" : "Signin",
         }}

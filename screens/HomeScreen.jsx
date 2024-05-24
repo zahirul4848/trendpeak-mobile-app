@@ -1,14 +1,16 @@
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View, FlatList, ScrollView, RefreshControl, Platform, StatusBar, Image } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View, FlatList, ScrollView, RefreshControl, Platform, StatusBar, Image, ActivityIndicator } from 'react-native'
 import React, { Fragment, useEffect, useRef, useState } from 'react';
-import { COLORS, icons } from '../constants';
+import { COLORS } from '../constants';
 import CarouselCardItem from "../components/CarouselCardItem";
 import CategoryMenu from '../components/CategoryMenu';
 import ProductCard from '../components/ProductCard';
-import { SearchBar } from '@rneui/themed';
 import { useGetAllCategoriesQuery } from '../store/categoryApiSlice';
 import { useGetAllProductsQuery } from '../store/productApiSlice';
 import { useScrollToTop } from '@react-navigation/native';
 import CategoryMenuMore from '../components/CategoryMenuMore';
+
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+
 
 const HomeScreen = ({navigation}) => {
   const [search, setSearch] = useState("");
@@ -32,43 +34,26 @@ const HomeScreen = ({navigation}) => {
   
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{paddingHorizontal: 10, paddingBottom: 70}}>
+      <View style={{paddingHorizontal: 10, marginBottom: 70}}>
         <View style={styles.topContainer}>
           <TouchableOpacity 
             onPress={()=> navigation.openDrawer()}
             style={styles.btnContainer}
           >
-            <Image source={icons.menu_primary} resizeMode="cover" style={styles.btnImg}/>
+            <MaterialCommunityIcons name="sort-variant" size={26} color="black" />
           </TouchableOpacity>
-          <SearchBar
-            placeholder="Search product..."
-            onChangeText={(text)=> setSearch(text)}
-            value={search}
-            onSubmitEditing={updateSearch}
-            returnKeyType='search'
-            lightTheme
-            containerStyle={{
-              backgroundColor: "transparent",
-              borderColor: "transparent",
-              borderWidth: 0,
-              padding: 0,
-              width: "80%",
-              margin: 0,
-              borderTopColor: "transparent",
-              borderBottomColor: "transparent",
-              marginBottom: 10,
-            }}
-            inputStyle={{
-              color: COLORS.primary,
-            }}
-            inputContainerStyle={{
-              backgroundColor: COLORS.lightGray,
-            }}
-            
-            labelStyle={{
-              backgroundColor: "green"
-            }}
-          />
+          <View style={styles.searchContainer}>
+            <Ionicons name="search" size={24} />
+            <TextInput 
+              returnKeyLabel="search" 
+              returnKeyType="search" 
+              style={styles.searchInput} 
+              placeholder="Search"
+              onChangeText={(text)=> setSearch(text)}
+              onSubmitEditing={updateSearch}
+              value={search}
+            />
+          </View>
         </View>
         
         <ScrollView 
@@ -95,6 +80,9 @@ const HomeScreen = ({navigation}) => {
                   <Text style={styles.seeMore}>See More</Text>
                 </TouchableOpacity>
               </View>
+              {isLoading && (
+                <ActivityIndicator style={{marginTop: 50}} />
+              )}
               <FlatList
                 scrollEnabled={false}
                 data={productsData?.products || []}
@@ -132,37 +120,24 @@ const styles = StyleSheet.create({
     justifyContent:'space-between',
     //alignItems: 'center',
     paddingTop: 10,
+    gap: 20,
+    marginBottom: 5,
   },
   btnContainer: {
-    width: 47.5,
-    height: 47.5,
-    backgroundColor: COLORS.lightGray,
-    borderRadius: 1,
+    width: 40,
+    height: 40,
+    backgroundColor: COLORS.gray,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 1
   },
   btnImg: {
-    width: 22,
-    height: 16,
+    width: 18,
+    height: 14,
     borderRadius: 1,
   },
-  searchInputContainer: {
-    position: 'relative',
-  },
-  searchInput: {
-    width: 250,
-    height: 50,
-    borderColor: COLORS.primary,
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingLeft: 40,
-  },
-  searchIcon: {
-    position: 'absolute',
-    top: 12,
-    left: 10,
-  },
+  
   categoryMenuContainer: {
     paddingVertical: 10,
     backgroundColor: COLORS.white,
@@ -194,5 +169,22 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: -10,
     top: -10,
+  },
+
+  searchContainer: {
+    height: 40,
+    backgroundColor: COLORS.gray,
+    borderRadius: 10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+  },
+  searchInput: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: COLORS.primary,
+    marginLeft: 10,
+    width: "100%",
   }
 })

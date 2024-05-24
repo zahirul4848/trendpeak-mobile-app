@@ -17,7 +17,7 @@ export default ()=> {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <StatusBar/>
+        <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
         <App/>
       </PersistGate>
     </Provider>
