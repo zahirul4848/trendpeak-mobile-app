@@ -17,27 +17,21 @@ const ProfileScreen = ({navigation}) => {
     dispatch(resetShippingInfo());
     await setItem("onboarded", '0');
   }
-
+  
   useEffect(() => {
     if(userInfo?.name == undefined) {
       navigation.navigate("LoginScreen");
+      dispatch(logout());
     }
   }, [userInfo, navigation]);
   
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{backgroundColor: COLORS.secondary, flex: 1}}>
       <View style={styles.backgroundBar} />
-      <View style={styles.mainBackground}>
         <View style={styles.profileInfo}>
           <View style={styles.avatar}>
             <Text style={styles.avatarTxt}>{userInfo?.name?.split("")[0]}</Text>
           </View>
-          {/* <Avatar 
-            rounded
-            size={100}
-            title={userInfo?.name?.split("")[0]}
-            containerStyle={{backgroundColor: COLORS.primary, borderColor: COLORS.lightGray, borderWidth: 1}}
-          /> */}
           <Text style={styles.nameTxt}>{userInfo?.name}</Text>
           <Text style={styles.emailTxt}>{userInfo?.email}</Text>
           <Divider 
@@ -73,9 +67,7 @@ const ProfileScreen = ({navigation}) => {
             <AntDesign name="logout" size={20} color="red" />
             <Text style={styles.itemTxt}>Logout</Text>
           </TouchableOpacity>
-        </View>
-      </View>
-      
+        </View>      
     </SafeAreaView>
   )
 }
@@ -87,12 +79,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 150,
     backgroundColor: COLORS.primary,
-  },
-  mainBackground: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: COLORS.secondary,
-    //position: "relative",
   },
   profileInfo: {
     flexDirection: "column",

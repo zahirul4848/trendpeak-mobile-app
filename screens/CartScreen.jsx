@@ -1,6 +1,6 @@
 import { Image, Pressable, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { COLORS, baseApiUrl, commonStyles, images } from '../constants';
+import { COLORS, commonStyles, images } from '../constants';
 import { AntDesign } from '@expo/vector-icons';
 import { Divider } from '@rneui/themed';
 import { useDispatch, useSelector } from 'react-redux';

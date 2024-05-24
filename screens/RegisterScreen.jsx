@@ -1,5 +1,5 @@
 import { Alert, Image, StatusBar, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { COLORS, images } from '../constants'
 import { LinearGradient } from 'expo-linear-gradient'
 import RegisterForm from '../components/RegisterForm'

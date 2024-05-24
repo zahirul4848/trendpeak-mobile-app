@@ -1,13 +1,12 @@
 import { StyleSheet, Image, Platform, StatusBar } from 'react-native'
 import React, { Fragment, useEffect } from 'react';
 import {COLORS, images} from "../constants";
-import { removeItem } from '../utils/asyncStorage';
 import { LinearGradient } from 'expo-linear-gradient';
 import LoginForm from '../components/LoginForm';
 import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
 import { useLoginMutation } from '../store/userApiSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUserInfo } from '../store/authSlice';
+import { logout, setUserInfo } from '../store/authSlice';
 
 const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -25,7 +24,9 @@ const LoginScreen = ({navigation}) => {
 
   useEffect(()=> {
     //removeItem("onboarded")
-    if(userInfo?.name !== undefined) {
+    if(userInfo && !userInfo.name) {
+      dispatch(logout());
+    } else if (userInfo?.name !== undefined) {
      navigation.navigate("ProfileScreen");
     }
   }, [userInfo, navigation]);

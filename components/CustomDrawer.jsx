@@ -4,7 +4,7 @@ import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawe
 import { COLORS, commonStyles, images } from '../constants';
 import { Divider } from '@rneui/themed';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Ionicons, MaterialIcons, Entypo } from '@expo/vector-icons';
+import { MaterialIcons, Entypo } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/authSlice';
 import { resetCart, resetShippingInfo } from '../store/cartSlice';
@@ -45,11 +45,6 @@ const CustomDrawer = (props) => {
             <Entypo name="mobile" size={20} color={COLORS.primary} />
             <Text style={{color: COLORS.primary}}>+88 01766 933 850</Text>
           </View>
-          {/* <Divider style={{marginVertical: 10}} /> */}
-          {/* <View style={commonStyles.row}>
-            <Entypo name="email" size={20} color={COLORS.primary} />
-            <Text style={{color: COLORS.primary}}>info@trendpeakbd.com</Text>
-          </View> */}
         </View>
       </View>
       <Divider style={{marginVertical: 10}} />

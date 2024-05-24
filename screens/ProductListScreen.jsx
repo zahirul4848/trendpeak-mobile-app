@@ -10,7 +10,6 @@ const ProductListScreen = ({navigation, route}) => {
   const [openModal, setOpenModal] = useState(false);
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState("");
-  //console.log(order)
   const {data: productsData, isLoading, refetch} = useGetAllProductsQuery({
     name: search !== "all" ? search || route?.params?.name : "", categoryId: route?.params?.categoryId || "", order,
   });

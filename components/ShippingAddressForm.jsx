@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, Alert } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react';
 import {COLORS, commonStyles} from "../constants";
 import { Divider } from '@rneui/themed';

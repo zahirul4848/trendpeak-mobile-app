@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: COLORS.lightWhite,
+    backgroundColor: COLORS.lightGray,
     paddingHorizontal: 20,
     //paddingVertical: 20,
     flexDirection: "row",
@@ -39,27 +39,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     elevation: 2,
     shadowRadius: 3,
-    height: 100,
+    height: 90,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   
   priceText: {
-    marginVertical: 10,
+    marginVertical: 5,
     fontSize: 25,
     color: COLORS.primary,
-  },
-  iconContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  iconButton: {
-    borderColor: COLORS.primary,
-    borderWidth: 1,
-    padding: 5,
-  },
-  itemText: {
-    marginHorizontal: 10,
-    fontSize: 22,
   },
   button: {
     backgroundColor: COLORS.primary,

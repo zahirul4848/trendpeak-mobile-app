@@ -34,7 +34,7 @@ const HomeScreen = ({navigation}) => {
   
   return (
     <SafeAreaView style={styles.container}>
-      <View style={{paddingHorizontal: 10, marginBottom: 70}}>
+      <View style={{paddingHorizontal: 10, marginBottom: 90}}>
         <View style={styles.topContainer}>
           <TouchableOpacity 
             onPress={()=> navigation.openDrawer()}

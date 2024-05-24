@@ -1,11 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react'
 import { COLORS, commonStyles } from '../constants'
 import { Divider } from '@rneui/themed';
 import HTMLView from 'react-native-htmlview';
 
 const AboutItem = ({product}) => {
-  // const [showMore, setShowMore] = useState(false);
   return (
     <View>
       <View style={styles.container}>
@@ -45,17 +43,6 @@ const AboutItem = ({product}) => {
         <HTMLView
           value={product.description}
         />
-        {/* <Text numberOfLines={!showMore ? 2 : 30} style={{color: COLORS.gray2}}>{product.description}</Text>
-        
-        {showMore ? (
-          <TouchableOpacity onPress={()=> setShowMore(prev=> !prev)}>
-            <Text style={{color: COLORS.primary}}>Show Less</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity onPress={()=> setShowMore(prev=> !prev)}>
-            <Text style={{color: COLORS.primary}}>Show More</Text>
-          </TouchableOpacity>
-        )} */}
       </View>
       <Divider/>
     </View>

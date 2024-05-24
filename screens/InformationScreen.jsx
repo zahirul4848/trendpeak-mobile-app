@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
-import { Divider, Icon, ListItem } from '@rneui/themed';
+import { ListItem } from '@rneui/themed';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../constants';
 

@@ -35,9 +35,9 @@ export const removeItem = async(key)=> {
 // }
 
 export const getUserData = async () => {
-  const data = getItem("trendPeakUserInfo");
+  const data = await getItem("trendPeakUserInfo");
   if(data?.name && data?.email) {
-    getItem("trendPeakUserInfo").then(JSON.parse).then(value => {
+    getItem("trendPeakUserInfo").then(JSON.parse).then(value => {  
       return value ? value : null;
     });
   } else {

@@ -23,7 +23,9 @@ export const AppTabScreen = () => {
           backgroundColor: COLORS.primary,
           borderTopLeftRadius: 10,
           borderTopRightRadius: 10,
-        }
+          position: "absolute",
+          bottom: 0,
+        },
       }}    
     >
       <AppTab.Screen 

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, TextInput, Alert } from 'react-native'
 import React, { useState } from 'react'
-import { COLORS, baseApiUrl, commonStyles } from '../constants'
+import { COLORS, commonStyles } from '../constants'
 import { CheckBox, Divider } from '@rneui/themed'
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,7 +26,7 @@ const CheckoutScreen = ({navigation}) => {
   
   const toPrice = (num)=> Number(num.toFixed(2));
   const itemsPrice = toPrice(cart.reduce((a, c)=> a + c.price * c.count, 0));
-  const shippingPrice = itemsPrice > 5000 ? toPrice(0) : toPrice(80);
+  const shippingPrice = itemsPrice > 999 ? toPrice(0) : toPrice(80);
   const totalPrice = itemsPrice + shippingPrice;
 
   const toggleModal = ()=> {

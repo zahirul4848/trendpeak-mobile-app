@@ -1,7 +1,7 @@
 import { FlatList, RefreshControl, SafeAreaView, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import React from 'react'
 import { useGetUserOrdersQuery } from '../store/orderApiSlice'
-import { COLORS, baseApiUrl, commonStyles } from '../constants';
+import { COLORS, commonStyles } from '../constants';
 import { Divider } from '@rneui/themed';
 import { Fragment } from 'react';
 

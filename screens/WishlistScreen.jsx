@@ -1,7 +1,7 @@
 import { Alert, FlatList, Image, RefreshControl, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect } from 'react';
 import { useGetWishlistQuery, useToggleWishlistMutation } from '../store/userApiSlice';
-import { COLORS, baseApiUrl, commonStyles } from '../constants';
+import { COLORS, commonStyles } from '../constants';
 import { MaterialIcons } from '@expo/vector-icons';
 
 const WishlistScreen = ({navigation}) => {

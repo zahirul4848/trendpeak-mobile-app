@@ -77,7 +77,6 @@ const RatingAndReviews = ({product, refetch}) => {
             <View style={styles.avatar}>
               <Text style={styles.avatarTxt}>{review.clientName.split("")[0]}</Text>
             </View>
-              {/* <Avatar size={32} rounded title={review.clientName.split("")[0]} containerStyle={{backgroundColor: COLORS.primary}} /> */}
               <Text style={{fontWeight: "bold"}}>{review.clientName}</Text>
             </View>
             <View style={commonStyles.row}>

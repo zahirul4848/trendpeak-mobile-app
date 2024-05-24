@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
-import { COLORS, baseApiUrl, images } from '../constants';
+import { COLORS } from '../constants';
 import { AntDesign } from '@expo/vector-icons';
 import CartModal from './CartModal';
 import { useDispatch, useSelector } from 'react-redux';

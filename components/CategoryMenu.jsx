@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react';
-import { COLORS, baseApiUrl } from '../constants';
+import { COLORS } from '../constants';
 
 const CategoryMenu = ({item, navigation}) => {
   return (

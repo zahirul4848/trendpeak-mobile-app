@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Dimensions } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 import React from 'react'
 import { setItem } from '../utils/asyncStorage';

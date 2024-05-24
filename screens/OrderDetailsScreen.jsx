@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, ScrollView, ActivityIndicator } from 'react-native'
 import React from 'react'
-import { COLORS, baseApiUrl, commonStyles } from '../constants'
+import { COLORS, commonStyles } from '../constants'
 import { Divider } from '@rneui/themed'
 import { Ionicons } from '@expo/vector-icons';
 import { useGetOrderQuery } from '../store/orderApiSlice';
