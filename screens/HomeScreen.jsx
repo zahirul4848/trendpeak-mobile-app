@@ -10,10 +10,12 @@ import { useScrollToTop } from '@react-navigation/native';
 import CategoryMenuMore from '../components/CategoryMenuMore';
 
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
-
+import { useGetUserProfileQuery } from '../store/userApiSlice';
 
 const HomeScreen = ({navigation}) => {
   const [search, setSearch] = useState("");
+  const [requestRefetch, setRequestRefetch] = useState(false);
+  const {data: userProfile, refetch: userRefetch} = useGetUserProfileQuery();
   const {
     data: categoryList, 
     refetch: categoryRefetch
@@ -30,7 +32,15 @@ const HomeScreen = ({navigation}) => {
   useEffect(() => {
     categoryRefetch();
     refetch();
+    userRefetch();
   }, [])
+  
+  useEffect(() => {
+    if(requestRefetch) {
+      userRefetch();
+      setRequestRefetch(false);
+    }
+  }, [requestRefetch])
   
   return (
     <SafeAreaView style={styles.container}>
@@ -96,7 +106,7 @@ const HomeScreen = ({navigation}) => {
                 refreshControl={
                   <RefreshControl refreshing={isLoading} onRefresh={refetch} />
                 }
-                renderItem={({ item }) => <ProductCard product={item} navigation={navigation} />}
+                renderItem={({ item }) => <ProductCard setRequestRefetch={setRequestRefetch} userProfile={userProfile} product={item} navigation={navigation} />}
               />
             </View> 
           </Fragment>

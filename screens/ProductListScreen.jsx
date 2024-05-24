@@ -5,11 +5,14 @@ import { Ionicons } from '@expo/vector-icons';
 import { useGetAllProductsQuery } from '../store/productApiSlice';
 import { COLORS, commonStyles } from '../constants';
 import SortingModal from '../components/SortingModal';
+import { useGetUserProfileQuery } from '../store/userApiSlice';
 
 const ProductListScreen = ({navigation, route}) => {
   const [openModal, setOpenModal] = useState(false);
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState("");
+  const [requestRefetch, setRequestRefetch] = useState(false);
+  const {data: userProfile, refetch: userRefetch} = useGetUserProfileQuery();
   const {data: productsData, isLoading, refetch} = useGetAllProductsQuery({
     name: search !== "all" ? search || route?.params?.name : "", categoryId: route?.params?.categoryId || "", order,
   });
@@ -24,7 +27,15 @@ const ProductListScreen = ({navigation, route}) => {
 
   useEffect(() => {
     refetch();
+    userRefetch();
   }, [])
+
+  useEffect(() => {
+    if(requestRefetch) {
+      userRefetch();
+      setRequestRefetch(false);
+    }
+  }, [requestRefetch])
   
   return (
     <View style={styles.container}>
@@ -65,7 +76,7 @@ const ProductListScreen = ({navigation, route}) => {
           refreshControl={
             <RefreshControl refreshing={isLoading} onRefresh={refetch} />
           }
-          renderItem={({ item }) => <ProductCard product={item} navigation={navigation} />}
+          renderItem={({ item }) => <ProductCard setRequestRefetch={setRequestRefetch} userProfile={userProfile} product={item} navigation={navigation} />}
         />
       </View>
       <SortingModal

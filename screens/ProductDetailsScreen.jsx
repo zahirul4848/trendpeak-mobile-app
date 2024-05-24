@@ -11,12 +11,15 @@ import { useGetProductQuery, useLazyGetAllProductsQuery } from '../store/product
 import ProductCard from '../components/ProductCard';
 import { useScrollToTop } from '@react-navigation/native';
 import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
+import { useGetUserProfileQuery } from '../store/userApiSlice';
 
 const descriptionTypes = ["About Item", "Reviews"];
 
 
 const ProductDetailsScreen = ({navigation, route}) => {
   const [activeDescriptionType, setActiveDescriptionType] = useState("About Item");
+  const [requestRefetch, setRequestRefetch] = useState(false);
+  const {data: userProfile, refetch: userRefetch} = useGetUserProfileQuery();
   const {data: product, isLoading, refetch} = useGetProductQuery(route?.params?.id);
   const [getAllProducts, {data: categoryWiseProducts, isLoading: loadingCategoryProducts}] = useLazyGetAllProductsQuery();
 
@@ -26,13 +29,21 @@ const ProductDetailsScreen = ({navigation, route}) => {
 
   useEffect(() => {
     refetch();
+    userRefetch();
     if(product) {
       const fetchCategoryWiseProduct = async()=> {
         await getAllProducts({categoryId: product.category._id}).unwrap();
       }
       fetchCategoryWiseProduct();
     }
-  }, [product])
+  }, [product]);
+
+  useEffect(() => {
+    if(requestRefetch) {
+      userRefetch();
+      setRequestRefetch(false);
+    }
+  }, [requestRefetch])
   
   return (
     <View style={{flex: 1}}>
@@ -111,7 +122,7 @@ const ProductDetailsScreen = ({navigation, route}) => {
                     justifyContent: 'space-between',
                     marginBottom: 10,
                   }}
-                  renderItem={({ item }) => <ProductCard product={item} navigation={navigation} />}
+                  renderItem={({ item }) => <ProductCard setRequestRefetch={setRequestRefetch} userProfile={userProfile} product={item} navigation={navigation} />}
                 />
               </View>
             </View>

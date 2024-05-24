@@ -5,16 +5,13 @@ import { AntDesign } from '@expo/vector-icons';
 import CartModal from './CartModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
-import { useGetUserProfileQuery, useToggleWishlistMutation } from '../store/userApiSlice';
-import { useEffect } from 'react';
+import { useToggleWishlistMutation } from '../store/userApiSlice';
 
-const ProductCard = ({navigation, product}) => {
+const ProductCard = ({navigation, product, setRequestRefetch, userProfile}) => {
   const dispatch = useDispatch();
   const {userInfo} = useSelector(state=> state.auth);
   const [openModal, setOpenModal] = useState(false);
-  
   const [toggleWishlist] = useToggleWishlistMutation();
-  const {data: userProfile, refetch} = useGetUserProfileQuery();
   const toggleModal = ()=> {
     setOpenModal(prev=> !prev);
   }
@@ -27,7 +24,7 @@ const ProductCard = ({navigation, product}) => {
     if(userInfo?.email) {
       try {
         await toggleWishlist({productId});
-        refetch();
+        setRequestRefetch(true);
       } catch (err) {
         Alert.alert(err?.data?.message || err.error);
       }
@@ -36,11 +33,11 @@ const ProductCard = ({navigation, product}) => {
     }
   }
 
-  useEffect(() => {
-    if(userInfo) {
-      refetch();
-    }
-  }, [userInfo]);
+  // useEffect(() => {
+  //   if(userInfo?.name) {
+  //     refetch();
+  //   }
+  // }, [userInfo]);
 
   return (
     <TouchableOpacity onPress={()=> navigation.navigate("ProductDetailsScreen", {id: product?._id, slug: product?.slug})} style={styles.container}>
