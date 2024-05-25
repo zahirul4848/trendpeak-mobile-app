@@ -1,9 +1,8 @@
 import { ActivityIndicator, FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import CarouselDetailsProduct from '../components/CarouselDetailsProduct';
-import { MaterialIcons } from '@expo/vector-icons';
 import { COLORS, commonStyles } from '../constants';
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons';
 import AboutItem from '../components/AboutItem';
 import RatingAndReviews from '../components/RatingAndReviews';
 import ProductDetailsFooter from '../components/ProductDetailsFooter';
@@ -12,6 +11,7 @@ import ProductCard from '../components/ProductCard';
 import { useScrollToTop } from '@react-navigation/native';
 import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
 import { useGetUserProfileQuery } from '../store/userApiSlice';
+import { useSelector } from 'react-redux';
 
 const descriptionTypes = ["About Item", "Reviews"];
 
@@ -19,6 +19,7 @@ const descriptionTypes = ["About Item", "Reviews"];
 const ProductDetailsScreen = ({navigation, route}) => {
   const [activeDescriptionType, setActiveDescriptionType] = useState("About Item");
   const [requestRefetch, setRequestRefetch] = useState(false);
+  const { userInfo } = useSelector(state=> state.auth);
   const {data: userProfile, refetch: userRefetch} = useGetUserProfileQuery();
   const {data: product, isLoading, refetch} = useGetProductQuery(route?.params?.id);
   const [getAllProducts, {data: categoryWiseProducts, isLoading: loadingCategoryProducts}] = useLazyGetAllProductsQuery();
@@ -29,7 +30,9 @@ const ProductDetailsScreen = ({navigation, route}) => {
 
   useEffect(() => {
     refetch();
-    userRefetch();
+    if(userInfo?.email) {
+      userRefetch();
+    }
     if(product) {
       const fetchCategoryWiseProduct = async()=> {
         await getAllProducts({categoryId: product.category._id}).unwrap();
@@ -60,7 +63,7 @@ const ProductDetailsScreen = ({navigation, route}) => {
             <CarouselDetailsProduct carouselImages={product.imageUrls} />
             <View style={styles.container}>
               <View style={commonStyles.row}>
-                <MaterialIcons name="category" size={20} color={COLORS.secondary} />
+                <Ionicons name="grid-outline" size={16} color={COLORS.secondary} />
                 <Text style={commonStyles.subTxt}>{product.category.name}</Text>
               </View>
               <Text style={[commonStyles.titleTxt, {marginVertical: 10}]} numberOfLines={2}>{product.title}</Text>
@@ -106,7 +109,7 @@ const ProductDetailsScreen = ({navigation, route}) => {
               }
               <View>
                 <View style={styles.titleContainer}>
-                  <Text style={commonStyles.titleTxt}>Recomendation</Text>
+                  <Text style={{fontSize: 18, fontWeight: "bold"}}>Recomendation</Text>
                   <TouchableOpacity onPress={()=> navigation.navigate("ProductListScreen", {categoryId: product.category._id, title: product.category.name})}>
                     <Text style={styles.seeMore}>See More</Text>
                   </TouchableOpacity>
@@ -142,11 +145,11 @@ export default ProductDetailsScreen
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 90,
+    marginTop: 60,
     padding: 10,
   },
   tabsContainer: {
-    marginTop: 16,
+    marginTop: 10,
   },
   tab: (activeDescriptionType, item) => ({
     width: "50%",

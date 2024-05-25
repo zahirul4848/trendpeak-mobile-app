@@ -32,8 +32,8 @@ const CartScreen = ({navigation}) => {
         <Text>Your Shopping Cart is Empty!</Text>
       </View>
     ) : (
+      <View style={styles.container}>
       <ScrollView 
-        style={styles.container}
         showsVerticalScrollIndicator={false}
       >
         {cart.map((product)=> (
@@ -97,6 +97,7 @@ const CartScreen = ({navigation}) => {
           <Text style={styles.buttonTxt}>Checkout</Text>
         </TouchableOpacity>
       </ScrollView>
+      </View>
     )}
     </>
   )
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    marginBottom: 60,
+    marginBottom: 50
   },
   itemWrapper: {
     height: 100,

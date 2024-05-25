@@ -43,7 +43,7 @@ const ProductCard = ({navigation, product, setRequestRefetch, userProfile}) => {
     <TouchableOpacity onPress={()=> navigation.navigate("ProductDetailsScreen", {id: product?._id, slug: product?.slug})} style={styles.container}>
       <Image source={{uri: product?.imageUrls[0]?.url}} style={styles.image} />
       <View style={styles.textContainer}>
-        <Text style={styles.categoryTxt}>{product?.category?.name}</Text>
+        <Text numberOfLines={1} style={styles.categoryTxt}>{product?.category?.name}</Text>
         <Text numberOfLines={2} style={styles.titleTxt}>{product?.title}</Text>
         <View style={styles.pricingContainer}>
           <Text style={styles.priceTxt}>Tk.{product?.price}</Text>
@@ -53,7 +53,7 @@ const ProductCard = ({navigation, product, setRequestRefetch, userProfile}) => {
         </View>        
       </View>
       <TouchableOpacity style={styles.heartIcon} onPress={()=> handleToggleWishlist(product?._id)}>
-        {userProfile?.wishlist?.includes(product?._id) ? <AntDesign name="heart" size={24} color={COLORS.primary} /> : <AntDesign name="hearto" size={24} color={COLORS.secondary} />}
+        {userInfo?.email && userProfile?.wishlist?.includes(product?._id) ? <AntDesign name="heart" size={24} color={COLORS.primary} /> : <AntDesign name="hearto" size={24} color={COLORS.secondary} />}
       </TouchableOpacity>
       <CartModal
         openModal={openModal} 

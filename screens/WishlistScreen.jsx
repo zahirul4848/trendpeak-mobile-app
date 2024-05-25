@@ -41,6 +41,7 @@ const WishlistScreen = ({navigation}) => {
                   </View>
                 </TouchableOpacity>
                 <TouchableOpacity
+                  style={styles.iconBtn}
                   onPress={()=> handleToggleWishlist(item._id)}
                 >
                   <MaterialIcons name="delete-outline" size={24} color="black" />
@@ -86,5 +87,12 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "column",
     rowGap: 10,
+  },
+  iconBtn: {
+    padding: 10,
+    backgroundColor: COLORS.lightGray,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
   }
 });

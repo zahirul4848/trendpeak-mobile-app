@@ -102,7 +102,7 @@ const CheckoutScreen = ({navigation}) => {
               <Divider/>
               <TextInput
                 multiline
-                numberOfLines={5}
+                numberOfLines={2}
                 style={styles.textInput}
                 placeholder='Write here...'
                 value={message}
@@ -190,17 +190,17 @@ export default CheckoutScreen
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
-    marginVertical: 20,
+    marginVertical: 10,
     flexDirection: "column",
-    rowGap: 20,
+    rowGap: 10,
     //marginBottom: 100,
   },
   wrapper: {
     backgroundColor: COLORS.lightWhite,
     borderRadius: 10,
     flexDirection: "column",
-    rowGap: 20,
-    paddingVertical: 20,
+    rowGap: 10,
+    paddingVertical: 10,
   },
   addAddressBtn: {
     borderWidth: 1,
@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.secondary,
     borderRadius: 10,
-    height: 100,
+    height: 60,
     padding: 10,
     marginHorizontal: 10,
     textAlignVertical: "top",

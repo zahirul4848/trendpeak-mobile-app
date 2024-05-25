@@ -47,7 +47,7 @@ const RatingAndReviews = ({product, refetch}) => {
   return (
     <View style={{marginVertical: 10}}>
       <View>
-        <Text style={commonStyles.titleTxt}>Average Ratings</Text>
+        <Text style={styles.titleTxt}>Average Ratings</Text>
         <Rating
           ratingCount={5}
           showRating
@@ -59,8 +59,8 @@ const RatingAndReviews = ({product, refetch}) => {
           }}
         />
       </View>
-      <Text style={[commonStyles.titleTxt, {marginVertical: 10}]}>Reviews</Text>
-      {/* Revews */}
+      <Text style={[styles.titleTxt, {marginVertical: 10}]}>Reviews</Text>
+      {/* Reviews */}
       {product.reviews.length === 0 && (
         <View style={[commonStyles.columnCenter, {marginVertical: 10}]}>
           <View style={styles.bigIconWrapper}>
@@ -71,8 +71,8 @@ const RatingAndReviews = ({product, refetch}) => {
       )}
 
       {product.reviews.map(review => (
-        <View style={{marginVertical: 10}} key={review._id}>
-          <View style={[commonStyles.rowSB, {marginVertical: 10}]}>
+        <View style={{marginVertical: 5}} key={review._id}>
+          <View style={[commonStyles.rowSB, {marginVertical: 5}]}>
             <View style={commonStyles.row}>
             <View style={styles.avatar}>
               <Text style={styles.avatarTxt}>{review.clientName.split("")[0]}</Text>
@@ -88,8 +88,9 @@ const RatingAndReviews = ({product, refetch}) => {
           <Text style={{textAlign: "right", color: COLORS.gray2, marginVertical: 10}}>{review.createdAt.split("T")[0]}</Text>
         </View>
       ))}
-      {userInfo ? (
+      {userInfo?.email ? (
         <View>
+          <Text style={styles.titleTxt}>Add a rating</Text>
           <View>
             <AirbnbRating
               count={5}
@@ -137,8 +138,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,    
   },
   avatar: {
-    width: 32,
-    height: 32,
+    width: 28,
+    height: 28,
     backgroundColor: COLORS.primary,
     borderRadius: 50,
     borderColor: COLORS.lightWhite,
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
   },
   avatarTxt: {
     color: COLORS.lightWhite,
-    fontSize: 18,
+    fontSize: 16,
   },
   commentBox: {
     marginVertical: 20,
@@ -165,6 +166,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     marginBottom: 20,
+  },
+
+  titleTxt: {
+    fontSize: 18,
+    fontWeight: "bold",
   },
 
 })

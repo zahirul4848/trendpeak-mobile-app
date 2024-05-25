@@ -11,16 +11,18 @@ import CategoryMenuMore from '../components/CategoryMenuMore';
 
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useGetUserProfileQuery } from '../store/userApiSlice';
+import { useSelector } from 'react-redux';
 
 const HomeScreen = ({navigation}) => {
   const [search, setSearch] = useState("");
   const [requestRefetch, setRequestRefetch] = useState(false);
+  const { userInfo } = useSelector(state=> state.auth);
   const {data: userProfile, refetch: userRefetch} = useGetUserProfileQuery();
   const {
     data: categoryList, 
     refetch: categoryRefetch
   } = useGetAllCategoriesQuery();
-  const {data: productsData, isLoading, refetch} = useGetAllProductsQuery({pageSize: 4});
+  const {data: productsData, isLoading, refetch} = useGetAllProductsQuery({pageSize: 10});
   
   const updateSearch = () => {
     navigation.navigate("ProductListScreen", {name: search, title: search})
@@ -32,7 +34,9 @@ const HomeScreen = ({navigation}) => {
   useEffect(() => {
     categoryRefetch();
     refetch();
-    userRefetch();
+    if(userInfo?.email) {
+      userRefetch();
+    }
   }, [])
   
   useEffect(() => {
@@ -85,7 +89,7 @@ const HomeScreen = ({navigation}) => {
             </View>
             <View style={styles.productCardContainer}>
               <View style={styles.titleContainer}>
-                <Text style={styles.categoryTitle}>Featured Product</Text>
+                <Text style={styles.categoryTitle}>Featured Products</Text>
                 <TouchableOpacity onPress={()=> navigation.navigate("ProductListScreen", {})}>
                   <Text style={styles.seeMore}>See More</Text>
                 </TouchableOpacity>
@@ -164,7 +168,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   categoryTitle: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   seeMore: {
@@ -195,6 +199,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: COLORS.primary,
     marginLeft: 10,
-    width: "100%",
+    width: "80%",
   }
 })

@@ -6,12 +6,14 @@ import { useGetAllProductsQuery } from '../store/productApiSlice';
 import { COLORS, commonStyles } from '../constants';
 import SortingModal from '../components/SortingModal';
 import { useGetUserProfileQuery } from '../store/userApiSlice';
+import { useSelector } from 'react-redux';
 
 const ProductListScreen = ({navigation, route}) => {
   const [openModal, setOpenModal] = useState(false);
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState("");
   const [requestRefetch, setRequestRefetch] = useState(false);
+  const { userInfo } = useSelector(state=> state.auth);
   const {data: userProfile, refetch: userRefetch} = useGetUserProfileQuery();
   const {data: productsData, isLoading, refetch} = useGetAllProductsQuery({
     name: search !== "all" ? search || route?.params?.name : "", categoryId: route?.params?.categoryId || "", order,
@@ -27,7 +29,9 @@ const ProductListScreen = ({navigation, route}) => {
 
   useEffect(() => {
     refetch();
-    userRefetch();
+    if(userInfo?.email) {
+      userRefetch();
+    }
   }, [])
 
   useEffect(() => {
@@ -150,6 +154,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: COLORS.primary,
     marginLeft: 10,
-    width: "100%",
+    width: "80%",
   }
 });

@@ -7,10 +7,9 @@ import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import ProductDetailsHeaderRight from '../components/ProductDetailsHeaderRight';
 import ProductListScreen from '../screens/ProductListScreen';
 import CheckoutScreen from '../screens/CheckoutScreen';
-import { COLORS, icons } from '../constants';
+import { COLORS } from '../constants';
 import CustomDrawer from '../components/CustomDrawer';
 import CategoryScreen from '../screens/CategoryScreen';
-import { Image } from 'react-native';
 import InformationScreen from '../screens/InformationScreen';
 import { Badge } from '@rneui/themed';
 import { useSelector } from 'react-redux';
@@ -140,8 +139,8 @@ export const DrawerNavigator = ()=> {
         name="CategoryScreen" component={CategoryScreen}
         options={({navigation})=> ({
           drawerIcon: ({color, size, focused})=> (
-            focused ? <Image source={icons.categoryWhite} style={{height: 18, width: 18, resizeMode: "cover"}} /> : 
-            <Image source={icons.categorySecondary} style={{height: 18, width: 18, resizeMode: "cover"}} />
+            focused ? <Ionicons name="grid" size={size} color={COLORS.lightWhite} /> : 
+            <Ionicons name="grid-outline" size={size} color={COLORS.secondary} />
           ),
           title: "Categories",
           headerLeft: ()=> (

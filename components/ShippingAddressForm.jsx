@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: COLORS.lightGray,
     fontSize: 14,
+    borderRadius: 10,
   },
   buttonSecondary: {
     borderWidth: 2,
