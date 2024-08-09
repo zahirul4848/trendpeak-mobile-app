@@ -1,4 +1,4 @@
-import { Alert, Image, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { Alert, Image, StatusBar, StyleSheet, Platform, View } from 'react-native'
 import React, { useEffect } from 'react'
 import { COLORS, images } from '../constants'
 import { LinearGradient } from 'expo-linear-gradient'
