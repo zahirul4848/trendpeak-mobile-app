@@ -2,7 +2,6 @@ import { ActivityIndicator, Alert, StyleSheet, Text, TextInput, TouchableOpacity
 import React, { useState } from 'react';
 import { COLORS, commonStyles } from "../constants";
 import { Rating } from 'react-native-ratings';
-import { AirbnbRating } from '@rneui/themed';
 import { Divider } from '@rneui/themed';
 import {AntDesign, MaterialIcons} from "@expo/vector-icons";
 import { useSelector } from 'react-redux';
@@ -11,10 +10,10 @@ import { useEffect } from 'react';
 
 const RatingAndReviews = ({product, refetch}) => {
   const {userInfo} = useSelector(state=> state.auth);
-  const [rating, setRating] = useState(5);
+  const [rating, setRating] = useState(3);
   const [comment, setComment] = useState("");
   const [createReview, {isLoading, isSuccess}] = useCreateReviewMutation();
-
+  
   const ratingCompleted = (rating) => {
     setRating(rating);
   };
@@ -92,13 +91,13 @@ const RatingAndReviews = ({product, refetch}) => {
         <View>
           <Text style={styles.titleTxt}>Add a rating</Text>
           <View>
-            <AirbnbRating
-              count={5}
+            <Rating
+              type="star"
+              ratingCount={5}
+              imageSize={40}
               defaultRating={5}
+              showRating
               onFinishRating={ratingCompleted}
-              style={{
-                paddingVertical: 10,
-              }}
             />
           </View>
           <View>
