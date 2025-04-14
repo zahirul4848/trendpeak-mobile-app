@@ -1,4 +1,4 @@
 // const baseApiUrl = "https://trendpeak-node-api.onrender.com";
-const baseApiUrl = "https://trendpeak.innovusdc.com";
+const baseApiUrl = "https://oldapi.trendpeakbd.com";
 
 export {baseApiUrl};
